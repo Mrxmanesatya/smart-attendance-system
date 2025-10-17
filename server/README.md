@@ -108,20 +108,34 @@ The API will be available at:
 | POST | `/api/auth/login` | Login and get JWT token | No |
 | GET | `/api/auth/me` | Get current user profile | Yes |
 
-### Sessions (Coming in Part 2)
+### Sessions
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
 | POST | `/api/sessions/` | Create new session | Yes (Admin/Instructor) |
+| GET | `/api/sessions/` | List all sessions | Yes |
 | GET | `/api/sessions/:id` | Get session details | Yes |
 | GET | `/api/sessions/:id/qr` | Get QR code for session | Yes (Admin/Instructor) |
+| PATCH | `/api/sessions/:id/deactivate` | Deactivate session | Yes (Admin/Instructor) |
 
-### Attendance (Coming in Part 2)
+### Attendance
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| POST | `/api/attendance/scan` | Mark attendance via QR | Yes (Trainee) |
+| POST | `/api/attendance/scan` | Mark attendance via QR | Yes |
 | GET | `/api/attendance/user/:id` | Get user attendance history | Yes |
+| GET | `/api/attendance/user/:id/stats` | Get user attendance statistics | Yes |
+| GET | `/api/attendance/session/:id` | Get session attendance list | Yes (Admin/Instructor) |
+
+### Miss Requests
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/api/miss-requests/` | Raise missed attendance request | Yes |
+| GET | `/api/miss-requests/` | List miss requests | Yes |
+| GET | `/api/miss-requests/:id` | Get miss request details | Yes |
+| PATCH | `/api/miss-requests/:id` | Approve/reject request | Yes (Admin) |
+| GET | `/api/miss-requests/user/:id/requests` | Get user's miss requests | Yes |
 
 ### Admin (Coming in Part 3)
 
@@ -250,10 +264,10 @@ sudo systemctl status mongod
 pip install -r requirements.txt --force-reinstall
 ```
 
-## 📝 Next Steps
+## 📝 Development Progress
 
-- ✅ Part 1: Backend foundation (Current)
-- ⏳ Part 2: Session management and QR code system
+- ✅ Part 1: Backend foundation with authentication
+- ✅ Part 2: Session management and QR code system (Current)
 - ⏳ Part 3: Admin dashboard and analytics
 - ⏳ Part 4: Frontend authentication
 - ⏳ Part 5: Frontend dashboards
