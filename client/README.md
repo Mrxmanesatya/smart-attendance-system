@@ -1,16 +1,40 @@
-# React + Vite
+# Smart Attendance System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-based frontend for the Smart Attendance System with Tailwind CSS, role-based authentication, and responsive design.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI**: Built with React 19 and Tailwind CSS 4
+- **Authentication**: JWT-based auth with protected routes
+- **Role-Based Access**: Different dashboards for Admin, Instructor, and Trainee
+- **Responsive Design**: Mobile-friendly interface
+- **Toast Notifications**: User feedback with react-hot-toast
 
-## React Compiler
+## 📋 Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18+ and npm
+- Backend server running on http://localhost:8000
 
-## Expanding the ESLint configuration
+## 🛠️ Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+cd client
+npm install
+cp .env.example .env
+npm run dev
+```
+
+App will be available at http://localhost:5173
+
+## 🎯 Role-Based Features
+
+**Admin**: System stats, user management, analytics, export data
+**Instructor**: Create sessions, generate QR codes, view attendance reports
+**Trainee**: Scan QR codes, view attendance history, request corrections
+
+## 📝 Development Progress
+
+- ✅ Part 1-3: Backend complete
+- ✅ Part 4: Frontend auth & core UI (Current)
+- ⏳ Part 5: Frontend dashboards & QR features
+- ⏳ Part 6: Docker & deployment
