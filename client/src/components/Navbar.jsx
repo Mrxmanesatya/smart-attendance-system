@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
@@ -24,14 +24,60 @@ const Navbar = () => {
     }
   };
 
+  const getNavigationLinks = () => {
+    switch (user?.role) {
+      case 'admin':
+        return (
+          <div className="flex items-center space-x-4">
+            <Link to="/admin" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Dashboard
+            </Link>
+            <Link to="/admin/users" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              User Management
+            </Link>
+          </div>
+        );
+      case 'instructor':
+        return (
+          <div className="flex items-center space-x-4">
+            <Link to="/instructor/sessions" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              My Sessions
+            </Link>
+            <Link to="/instructor/sessions/create" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Create Session
+            </Link>
+          </div>
+        );
+      case 'trainee':
+        return (
+          <div className="flex items-center space-x-4">
+            <Link to="/trainee/scan" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Scan QR
+            </Link>
+            <Link to="/trainee/attendance" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              My Attendance
+            </Link>
+            <Link to="/trainee/requests" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Requests
+            </Link>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Smart Attendance
-            </h1>
+          <div className="flex items-center space-x-8">
+            <Link to="/dashboard">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer">
+                Smart Attendance
+              </h1>
+            </Link>
+            {getNavigationLinks()}
           </div>
 
           <div className="flex items-center space-x-4">
