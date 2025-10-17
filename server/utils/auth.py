@@ -117,7 +117,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
     return decode_token(token)
 
 
-async def require_role(required_roles: list[UserRole]):
+def require_role(required_roles: list[UserRole]):
     """
     Dependency factory to check if user has required role
     
