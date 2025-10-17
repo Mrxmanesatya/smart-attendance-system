@@ -137,13 +137,19 @@ The API will be available at:
 | PATCH | `/api/miss-requests/:id` | Approve/reject request | Yes (Admin) |
 | GET | `/api/miss-requests/user/:id/requests` | Get user's miss requests | Yes |
 
-### Admin (Coming in Part 3)
+### Admin
 
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
 | GET | `/api/admin/stats` | Get system statistics | Yes (Admin) |
-| GET | `/api/miss-requests` | Get all miss requests | Yes (Admin) |
-| PATCH | `/api/miss-requests/:id` | Approve/reject request | Yes (Admin) |
+| GET | `/api/admin/analytics/daily-attendance` | Get daily attendance trends | Yes (Admin) |
+| GET | `/api/admin/analytics/absence-report` | Get absence report | Yes (Admin) |
+| GET | `/api/admin/analytics/session-summary` | Get session summary | Yes (Admin/Instructor) |
+| GET | `/api/admin/users` | List all users | Yes (Admin) |
+| PATCH | `/api/admin/users/:id/role` | Update user role | Yes (Admin) |
+| DELETE | `/api/admin/users/:id` | Delete user | Yes (Admin) |
+| GET | `/api/admin/export/attendance` | Export attendance to CSV | Yes (Admin) |
+| GET | `/api/admin/export/attendance-excel` | Export attendance to Excel | Yes (Admin) |
 
 ## 🗄️ Database Schema
 
@@ -267,8 +273,8 @@ pip install -r requirements.txt --force-reinstall
 ## 📝 Development Progress
 
 - ✅ Part 1: Backend foundation with authentication
-- ✅ Part 2: Session management and QR code system (Current)
-- ⏳ Part 3: Admin dashboard and analytics
+- ✅ Part 2: Session management and QR code system
+- ✅ Part 3: Admin dashboard and analytics (Current)
 - ⏳ Part 4: Frontend authentication
 - ⏳ Part 5: Frontend dashboards
 - ⏳ Part 6: Docker and deployment

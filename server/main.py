@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from config import settings
 from database import connect_to_mongo, close_mongo_connection
-from routes import auth, sessions, attendance, miss_requests
+from routes import auth, sessions, attendance, miss_requests, admin
 
 
 @asynccontextmanager
@@ -47,6 +47,7 @@ app.include_router(auth.router)
 app.include_router(sessions.router)
 app.include_router(attendance.router)
 app.include_router(miss_requests.router)
+app.include_router(admin.router)
 
 
 @app.get("/")
