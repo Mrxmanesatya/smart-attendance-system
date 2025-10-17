@@ -16,7 +16,7 @@ from models.attendance import (
     AttendanceMethod
 )
 from models.user import TokenData, UserRole
-from utils.auth import get_current_user
+from utils.auth import get_current_user, require_role
 from utils.qr_generator import is_qr_expired
 
 router = APIRouter(prefix="/api/attendance", tags=["Attendance"])
@@ -262,7 +262,3 @@ async def get_session_attendance(
             })
     
     return result
-
-
-# Import for type hint
-from utils.auth import require_role
