@@ -1,3 +1,15 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
+# Smart Attendance System
 
-Learn more at https://developers.google.com/idx/guides/customize-idx-env
+A simple AI-powered Smart Attendance System that automates attendance tracking using face recognition and real-time validation.
+
+## Project Structure
+- **client/** → Frontend folder (React or HTML/CSS/JS)
+- **server/** → Backend folder (Node.js or Python Flask)
+- **README.md** → Overview of the project
+
+## Hacktoberfest
+This repository is participating in **Hacktoberfest**! 🎉  
+Contribute by fixing bugs, adding new features, or improving documentation.
+
+## Maintainers
+We welcome contributions from everyone. Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) before making a pull request.
