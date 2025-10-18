@@ -8,6 +8,20 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 
+// Admin Pages
+import AdminDashboard from './pages/admin/AdminDashboard';
+import UserManagement from './pages/admin/UserManagement';
+
+// Instructor Pages
+import CreateSession from './pages/instructor/CreateSession';
+import SessionList from './pages/instructor/SessionList';
+import SessionDetail from './pages/instructor/SessionDetail';
+
+// Trainee Pages
+import QRScanner from './pages/trainee/QRScanner';
+import MyAttendance from './pages/trainee/MyAttendance';
+import MissRequests from './pages/trainee/MissRequests';
+
 function App() {
   return (
     <Router>
@@ -30,10 +44,27 @@ function App() {
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             
-            {/* Placeholder routes for Part 5 */}
-            <Route path="admin/*" element={<div className="text-center py-12"><h2 className="text-2xl font-bold">Admin Section - Coming in Part 5</h2></div>} />
-            <Route path="instructor/*" element={<div className="text-center py-12"><h2 className="text-2xl font-bold">Instructor Section - Coming in Part 5</h2></div>} />
-            <Route path="trainee/*" element={<div className="text-center py-12"><h2 className="text-2xl font-bold">Trainee Section - Coming in Part 5</h2></div>} />
+            {/* Admin Routes */}
+            <Route path="admin">
+              <Route index element={<AdminDashboard />} />
+              <Route path="users" element={<UserManagement />} />
+            </Route>
+
+            {/* Instructor Routes */}
+            <Route path="instructor">
+              <Route index element={<SessionList />} />
+              <Route path="sessions" element={<SessionList />} />
+              <Route path="sessions/create" element={<CreateSession />} />
+              <Route path="sessions/:id" element={<SessionDetail />} />
+            </Route>
+
+            {/* Trainee Routes */}
+            <Route path="trainee">
+              <Route index element={<QRScanner />} />
+              <Route path="scan" element={<QRScanner />} />
+              <Route path="attendance" element={<MyAttendance />} />
+              <Route path="requests" element={<MissRequests />} />
+            </Route>
           </Route>
 
           {/* Fallback */}
