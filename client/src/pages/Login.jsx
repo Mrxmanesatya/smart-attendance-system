@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -27,7 +27,7 @@ const Login = () => {
     setLoading(false);
 
     if (result.success) {
-      navigate('/dashboard');
+      navigate("/home");
     }
   };
 
@@ -43,7 +43,10 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email Address
             </label>
             <input
@@ -59,7 +62,10 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password
             </label>
             <input
@@ -79,13 +85,16 @@ const Login = () => {
             disabled={loading}
             className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{' '}
-          <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="font-medium text-blue-600 hover:text-blue-500"
+          >
             Register now
           </Link>
         </p>

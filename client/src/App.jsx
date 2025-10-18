@@ -1,26 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import Layout from './components/Layout';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 // Admin Pages
-import AdminDashboard from './pages/admin/AdminDashboard';
-import UserManagement from './pages/admin/UserManagement';
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import UserManagement from "./pages/admin/UserManagement";
 
 // Instructor Pages
-import CreateSession from './pages/instructor/CreateSession';
-import SessionList from './pages/instructor/SessionList';
-import SessionDetail from './pages/instructor/SessionDetail';
+import CreateSession from "./pages/instructor/CreateSession";
+import SessionList from "./pages/instructor/SessionList";
+import SessionDetail from "./pages/instructor/SessionDetail";
 
 // Trainee Pages
-import QRScanner from './pages/trainee/QRScanner';
-import MyAttendance from './pages/trainee/MyAttendance';
-import MissRequests from './pages/trainee/MissRequests';
+import QRScanner from "./pages/trainee/QRScanner";
+import MyAttendance from "./pages/trainee/MyAttendance";
+import MissRequests from "./pages/trainee/MissRequests";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -43,7 +49,8 @@ function App() {
           >
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            
+            <Route path="home" element={<Home />} />
+
             {/* Admin Routes */}
             <Route path="admin">
               <Route index element={<AdminDashboard />} />
@@ -68,7 +75,7 @@ function App() {
           </Route>
 
           {/* Fallback */}
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
     </Router>

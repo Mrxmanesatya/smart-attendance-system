@@ -3,7 +3,7 @@ Main application entry point
 FastAPI application for Smart Attendance System
 """
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from config import settings
 from database import connect_to_mongo, close_mongo_connection
