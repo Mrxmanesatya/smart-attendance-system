@@ -18,6 +18,7 @@ from models.attendance import (
 from models.user import TokenData, UserRole
 from utils.auth import get_current_user, require_role
 from utils.qr_generator import is_qr_expired
+from utils.realtime import realtime_manager
 
 router = APIRouter(prefix="/api/attendance", tags=["Attendance"])
 
@@ -117,6 +118,26 @@ async def mark_attendance_qr(
     created_attendance = await db.attendance_records.find_one({"_id": result.inserted_id})
     created_attendance["_id"] = str(created_attendance["_id"])
     
+    # Broadcast to realtime subscribers for this session
+    try:
+        await realtime_manager.broadcast(
+            session_id=session_id,
+            event="attendance_scanned",
+            payload={
+                "attendance": {
+                    "id": created_attendance["_id"],
+                    "session_id": created_attendance["session_id"],
+                    "user_id": created_attendance["user_id"],
+                    "status": created_attendance["status"],
+                    "method": created_attendance["method"],
+                    "timestamp": created_attendance["timestamp"],
+                }
+            }
+        )
+    except Exception:
+        # Non-fatal if broadcast fails
+        pass
+
     return AttendanceResponse(**created_attendance)
 
 

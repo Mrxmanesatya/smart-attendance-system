@@ -1,5 +1,6 @@
 // API Configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const WS_BASE_URL = (import.meta.env.VITE_WS_BASE_URL) || API_BASE_URL.replace('http', 'ws');
 
 export const API_ENDPOINTS = {
   // Auth
@@ -18,6 +19,9 @@ export const API_ENDPOINTS = {
   ATTENDANCE_USER: (id) => `${API_BASE_URL}/api/attendance/user/${id}`,
   ATTENDANCE_USER_STATS: (id) => `${API_BASE_URL}/api/attendance/user/${id}/stats`,
   ATTENDANCE_SESSION: (id) => `${API_BASE_URL}/api/attendance/session/${id}`,
+  // Realtime
+  REALTIME_SESSION_LIVE: (id) => `${API_BASE_URL}/api/realtime/session/${id}/live`,
+  REALTIME_WS: (sessionId) => `${WS_BASE_URL}/api/realtime/ws?session_id=${sessionId}`,
   
   // Miss Requests
   MISS_REQUESTS: `${API_BASE_URL}/api/miss-requests`,
