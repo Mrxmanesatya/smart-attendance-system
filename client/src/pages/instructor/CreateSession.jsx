@@ -37,15 +37,17 @@ const CreateSession = () => {
 
     try {
       const response = await axios.post(API_ENDPOINTS.SESSIONS, {
-        ...formData,
-        start_time: startDate.toISOString(),
-        end_time: endDate.toISOString(),
+        title: formData.title,
+        description: formData.description,
+        startTime: startDate.toISOString(),
+        endTime: endDate.toISOString(),
+        instructorId: 'instructor-1', // TODO: Get from auth context
       });
 
       toast.success('Session created successfully!');
-      navigate(`/instructor/session/${response.data._id}`);
+      navigate(`/instructor/session/${response.data.id}`);
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Failed to create session');
+      toast.error(error.response?.data?.error || 'Failed to create session');
     } finally {
       setLoading(false);
     }

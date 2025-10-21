@@ -44,18 +44,22 @@ const QRScanner = () => {
 
   const onScanSuccess = async (decodedText) => {
     console.log('QR Code scanned:', decodedText);
-    
+
     // Stop scanner immediately after successful scan
     stopScanning();
 
     try {
+      // Get current user ID (mock for now - in real app, get from auth context)
+      const currentUserId = 'student-1'; // TODO: Get from auth context
+
       const response = await axios.post(API_ENDPOINTS.ATTENDANCE_SCAN, {
-        qr_code_value: decodedText
+        qrCodeValue: decodedText,
+        userId: currentUserId
       });
 
       toast.success(`Attendance marked successfully! Status: ${response.data.status}`);
     } catch (error) {
-      const message = error.response?.data?.detail || 'Failed to mark attendance';
+      const message = error.response?.data?.error || 'Failed to mark attendance';
       toast.error(message);
     }
   };
