@@ -21,6 +21,7 @@ import UserManagement from "./pages/admin/UserManagement";
 import CreateSession from "./pages/instructor/CreateSession";
 import SessionList from "./pages/instructor/SessionList";
 import SessionDetail from "./pages/instructor/SessionDetail";
+import LiveAttendance from "./pages/instructor/LiveAttendance";
 
 // Trainee Pages
 import QRScanner from "./pages/trainee/QRScanner";
@@ -63,6 +64,14 @@ function App() {
               <Route path="sessions" element={<SessionList />} />
               <Route path="sessions/create" element={<CreateSession />} />
               <Route path="sessions/:id" element={<SessionDetail />} />
+              <Route
+                path="sessions/:id/live"
+                element={
+                  <ProtectedRoute allowedRoles={["admin", "instructor"]}>
+                    <LiveAttendance />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
 
             {/* Trainee Routes */}
